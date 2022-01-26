@@ -12,7 +12,7 @@
             _context = context;
         }
 
-        public void CreateProduct(Product product)
+        public void CreateProduct(SqlProduct product)
         {
             if(product == null)
             {
@@ -22,7 +22,7 @@
             _context.Products.Add(product);
         }
 
-        public void DeleteProduct(Product product)
+        public void DeleteProduct(SqlProduct product)
         {
             if(product == null)
             {
@@ -32,12 +32,12 @@
             _context.Products.Remove(product);
         }
 
-        public IEnumerable<Product> GetAllProducts()
+        public IEnumerable<SqlProduct> GetAllProducts()
         {
             return _context.Products.ToList();
         }
 
-        public Product GetProduct(int id)
+        public SqlProduct GetProduct(int id)
         {
             return _context.Products.FirstOrDefault(c => c.Id == id);
         }
@@ -47,7 +47,7 @@
             return _context.SaveChanges() >= 0;
         }
 
-        public void UpdateProduct(Product product)
+        public void UpdateProduct(SqlProduct product)
         {
             
         }

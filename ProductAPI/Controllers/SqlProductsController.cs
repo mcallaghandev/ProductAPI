@@ -7,15 +7,16 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.JsonPatch;
 
-    [Route("api/products")]
+    [Route("api/[controller]")]
+    [ApiExplorerSettings(IgnoreApi = true)]
     [ApiController]
-    public class ProductsController : ControllerBase
+    public class SqlProductsController : ControllerBase
     {
         private readonly IProductRepository _repository;
 
         public readonly IMapper _mapper;
 
-        public ProductsController(IProductRepository repository, IMapper mapper)
+        public SqlProductsController(IProductRepository repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
@@ -29,8 +30,8 @@
             return Ok(_mapper.Map<IEnumerable<ProductReadDto>>(items));
         }
 
-        [HttpGet("{id}", Name = "GetProductById")]
-        public ActionResult<ProductReadDto> GetProductById(int id)
+        [HttpGet("{id}", Name = "GetSqlProductById")]
+        public ActionResult<ProductReadDto> GetSqlProductById(int id)
         {
             var item = _repository.GetProduct(id);
 
@@ -47,7 +48,7 @@
         {
             product.CreatedDateTime = DateTime.UtcNow;
 
-            var productModel = _mapper.Map<Product>(product);
+            var productModel = _mapper.Map<SqlProduct>(product);
 
             _repository.CreateProduct(productModel);
 
@@ -55,7 +56,7 @@
 
             var readDto = _mapper.Map<ProductReadDto>(productModel);
 
-            return CreatedAtRoute(nameof(GetProductById), new { id = readDto.Id }, readDto);
+            return CreatedAtRoute(nameof(GetSqlProductById), new { id = readDto.Id }, readDto);
         }
 
         [HttpPut("{id}")]

@@ -6,14 +6,14 @@
     {
         bool SaveChanges();
 
-        IEnumerable<Product> GetAllProducts();
+        IEnumerable<SqlProduct> GetAllProducts();
 
-        Product GetProduct(int id);
+        SqlProduct GetProduct(int id);
 
-        void CreateProduct(Product product);
+        void CreateProduct(SqlProduct product);
 
-        void UpdateProduct(Product product);
+        void UpdateProduct(SqlProduct product);
 
-        void DeleteProduct(Product product);
+        void DeleteProduct(SqlProduct product);
     }
 }

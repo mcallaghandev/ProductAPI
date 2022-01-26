@@ -10,6 +10,6 @@
 
         }
 
-        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<SqlProduct> Products { get; set; }
     }
 }

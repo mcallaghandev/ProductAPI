@@ -2,7 +2,7 @@
 {
     public class ProductReadDto
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public string Title { get; set; }
 
@@ -12,7 +12,7 @@
 
         public DateTime? ModifiedDateTime { get; set; }
 
-        public string ImageUrl { get; set; }
+        public IEnumerable<string> ImageUrls { get; set; }
 
         public decimal PriceExVat { get; set; }
 
